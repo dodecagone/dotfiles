@@ -4,7 +4,7 @@ I dislike having my computer clogged with packages and softwares.
 I like to often reset my computer and start from a fresh Debian12 bookworm install. 
 This time I wanted to give i3 a try (after using GNOME), and to have 0 excedent packages. 
 
-This repo is aimed at giving a simple and quick guide to set up a **minimalistic** and **usable** i3wm env from a *headless* Debian12 installation**.
+This repo is aimed at giving a simple and quick guide to set up a **minimalistic** and **usable** i3wm env from a *headless* Debian12 installation.
 
 ## Overview
 * Debian12 *stable* is *very* stable. It's intended for servers. I've used it for 3 years before realising how ununpdated it was. We will install Debian12 stable (aka "bookworm") and then switch the apt `sources.list` to testing (aka "trixie", it's still stable, don't worry about that). There is one important step so don't miss it!
@@ -46,11 +46,22 @@ When you boot, you will have essentially nothing but a terminal. Log in as the u
 
   It should have replaced every "bookworm" occurence with "trixie" in the file. If not, well do it yourself.
 
-  Press `wq` to save and quit.
+  Type `:wq` to save and quit.
 * Type 
-  `apt update` to update the new sources, then
-  **VERY IMPORTANT** (that's the important step I mentionned), do
-  `apt full-upgrade` (if you don't do that, nothing will work when you restart your computer and you'd have to restart all over again).
-  For safety, I usually redo an `apt update` and an `apt upgrade`.
-* Restart you computer. You know have Debian12 Testing, which is way more up-to-date (and still very stable, don't worry).
+  ```
+  apt update
+  ```
+  to update the new sources, then
+  **VERY IMPORTANT** (that's the important step I mentionned), type:
+  ```
+  apt full-upgrade
+  ```
+  (if you don't do that, nothing will work when you restart your computer and you'd have to restart all over again).
+  For safety, I usually type an 
+  ```
+  apt update && apt upgrade
+  ```
+  but it's probably useless.
+* Restart you computer. You know have Debian12 testing, which is way more up-to-date (and still very stable, don't worry).
+
 
