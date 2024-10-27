@@ -2,21 +2,22 @@
 ## Why and what is it for
 I dislike having my computer clogged with packages and softwares. 
 I like to often reset my computer and start from a fresh Debian12 bookworm install. 
-This time I wanted to give i3 a try (after using GNOME), and to have 0 excedent packages. 
+This time I wanted to give i3 a try (after using GNOME), and have 0 excedent packages. 
 
 This repo is aimed at giving a simple and quick guide to set up a **minimalistic** and **usable** i3wm env from a *headless* Debian12 installation.
 
 ## Overview
-* Debian12 *stable* is *very* stable. It's intended for servers. I've used it for 3 years before realising how ununpdated it was. We will install Debian12 stable (aka "bookworm") and then switch the apt `sources.list` to testing (aka "trixie", it's still stable, don't worry about that). There is one important step so don't miss it!
-* At first, we will not install any desktop environment, so we will have to setup x11 and i3wm by ourselves. It is very easy, you just have to know the right packages to install.
-* Not everything I have in my dotfiles necessary *per se* but it makes things much more pretty/usable.
+* Debian12 *stable* is *very* stable. It's intended for servers. I've used it for 3 years before realising how ununpdated it was. We will install Debian12 stable (aka "bookworm") and then switch the apt sources to *testing* (aka "trixie", it is still stable, do not worry about that). There is one important step so do not miss it!
+* At first, we will not install any desktop environment, so we will have to setup x11 and i3wm by ourselves. It is very easy, you just have to know the right packages to install (that's why I'm here for :D).
+* One `i3wm` is set up, you can clone this repo to get my config so you have something not to ugly (hopefully) to start out with.
+Not everything I have in my dotfiles is necessary *per se* but it makes things much more pretty/usable.
 
 ## Prerequisites
 * An Internet connection.
 * Backup the files you want to keep. The goal is to start completely headless so we will reset everything.
 * Have a Debian12 **stable** (aka "bookworm") installation media ready. See [debian website](https://www.debian.org/releases/stable/i386/ch02s04.en.html) for more info.
 * I expect you to know how to use `vi` or `nano` because we will have no graphical environment for a while.
-* It shouldn't be your first time toying with UNIX. It is not too advanced but I will not details *everything* (I will link the documentations if needed).
+* It shouldn't be your first time toying with a Debian-based distribution. It is not too advanced but I will not detail *everything* (I will link the documentations if needed).
 
 # Installation
 ## Installing Debian
@@ -86,11 +87,26 @@ where `<user>` is the name of the user you defined during the installation proce
 
 Now, `exit` the root console to return to the user, and `sudo` should work (try an `sudo ls`).
 
-## Setting up i3wm
+## Making i3wm just work
 Now, it's time to install the *bare minimum* to make i3wm work. 
 
 To do so, we will need to install `i3`, `x11-xserver-utils`, `pulseaudio`, `xorg`, and `network-manager`.
 
-*Note: I have not dug enough, but maybe the* `xorg` *package is not needed in its entirety, but it really does not matter`.
+*Note: I haven't dug, but maybe the* `xorg` *package is not needed in its entirety, and we could get away with only installing some parts of it, but it doesn't feel worth. I once tried to do that and ended up with no touchpad support.*
 
-First, sin
+Well, let's install !
+```
+sudo apt install i3 x11-server-utils pulseaudio xorg
+```
+Then, you should be able to type
+```
+startx
+```
+and `i3wm` should start !
+
+A window should open, press `Enter` and then `Enter`. 
+Now you have a black screen and an ugly bar at the bottom. 
+You can press `super+Enter` to open up a terminal (don't worry if the terminal is gruesome, we will change it right away).
+
+
+
