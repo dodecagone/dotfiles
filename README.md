@@ -155,10 +155,11 @@ You should have `NetworkManager` installed (`sudo apt install network-manager`).
   ```
   It shows you a list of your network devices, and their state. 
   
-  **If your device is "unmanaged"**
+ **If your device is "unmanaged"**
 
-  Edit the `NetworkManager` config file with
-  ```
-  sudo vim /etc/NetworkManager/NetworkManager.conf
-  ```
-  and change `managed` from `false` to `true`. Save and quit. Restart `NetworkManager`.
+    Edit the `NetworkManager` config file with
+    ```
+    sudo vim /etc/NetworkManager/NetworkManager.conf
+    ```
+    and change `managed` from `false` to `true`. Save and quit. Restart `NetworkManager`.
+
