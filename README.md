@@ -68,24 +68,26 @@ When you boot, you will have essentially nothing but a terminal. Log in as the u
 * Restart you computer. You now have Debian12 testing, which is way more up-to-date (and still very stable, don't worry).
 * For quality of life and not have to log in as root everytime, let's quickly set-up `sudo`.
   Same thing as before, type
-```
-su -
-```
-and then
-```
-apt install sudo
-```
-Then
-```
-vi /etc/sudoers
-```
-and find `root      ALL=(ALL:ALL) ALL`. Below, add
-```
-<user>      ALL=(ALL:ALL) ALL
-```
-where `<user>` is the name of the user you defined during the installation process.
+  ```
+  su -
+  ```
+  and then
+  ```
+  apt install sudo
+  ```
+  Then
+  ```
+  vi /etc/sudoers
+  ```
+  and find `root      ALL=(ALL:ALL) ALL`. Below, add
+  ```
+  <user>      ALL=(ALL:ALL) ALL
+  ```
+  where `<user>` is the name of the user you defined during the installation process.
 
-Now, `exit` the root console to return to the user, and `sudo` should work (try an `sudo ls`).
+  Now, `exit` the root console to return to the user, and `sudo` should work (try an `sudo ls`).
+
+We're now done with setting up the base. You could theoretically stop here and have a working computer, but please don't.
 
 ## Making i3wm just work
 Now, it's time to install the *bare minimum* to make i3wm work. 
@@ -104,9 +106,30 @@ startx
 ```
 and `i3wm` should start !
 
-A window should open, press `Enter` and then `Enter`. 
+A window should open, asking you to create an i3 `config` file (yes), and to chose a `mod` key (adice: use `super`, since `alt` will interfere with softwares' shortcuts).
 Now you have a black screen and an ugly bar at the bottom. 
-You can press `super+Enter` to open up a terminal (don't worry if the terminal is gruesome, we will change it right away).
 
+You can press `mod+Return` to open up a terminal (don't worry if the terminal is gruesome, we will change it right away).
+Press `mod+Shift+Q` (or `A` depending on your locale) to close it. 
 
+Press `mod+Shift+E` to close the session and return to our cool, empty, and cold terminal.
+
+## Cool packages
+It's time to install actual packages. 
+```
+sudo apt install curl git feh alacritty vim firefox-esr
+```
+`feh` will be our background manager, and `alacritty` our terminal emulator. Feel free to use other ones. I like these ones because they are light and feel minimalistic, and are easy to configure.
+
+* Let's change the base terminal. Go into the i3 `config` file 
+  ```
+  vim .config/i3/config 
+  ```
+  and look for the line `bindsym $mod+Return exec i3-sensible-terminal` and replace `i3-sensible-terminal` with `alacritty` (or whatever else you installed).
+
+  Now save the file and type `startx` to load i3 again.
+
+    Now, pressing `mod+Return` in i3 should open `alacritty` !
+  
+  *Pro tips: when editing .config/i3/config, saving and pressing* `mod+Shift+R` *reloads i3 and applies the changes. It's great. You will use it.*
 
