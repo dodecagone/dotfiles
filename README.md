@@ -174,3 +174,7 @@ You should have `NetworkManager` installed (`sudo apt install network-manager`).
 
 If you've got the same problem as I did multiple times, `ncmli dev wifi list` should now show a list of available network and `nmcli dev wifi connect <name> [-a]` works. 
 
+
+# Speedrunning any%
+This section is just a very quick summary of my setup guide, in case you already did everything and just need the commands. 
+
