@@ -155,11 +155,22 @@ You should have `NetworkManager` installed (`sudo apt install network-manager`).
   ```
   It shows you a list of your network devices, and their state. 
   
- **If your device is "unmanaged"**
+* **If your device is "unmanaged"**
 
-    Edit the `NetworkManager` config file with
-    ```
-    sudo vim /etc/NetworkManager/NetworkManager.conf
-    ```
-    and change `managed` from `false` to `true`. Save and quit. Restart `NetworkManager`.
+  Edit the `NetworkManager` config file with
+  ```
+  sudo vim /etc/NetworkManager/NetworkManager.conf
+  ```
+  and change `managed` from `false` to `true`. Save and quit. Restart `NetworkManager`.
+
+  Check again if it worked with `nmcli dev status`.
+* **If your device is "unavailable"**
+  
+  Edit the `interfaces` file with 
+  ```
+  sudo vim /etc/network/interfaces
+  ```
+  and remove everything (don't remove the file, only its content). Save and quit. Restart **your computer**.
+
+If you've got the same problem as I did multiple times, `ncmli dev wifi list` should now show a list of available network and `nmcli dev wifi connect <name> [-a]` works. 
 
