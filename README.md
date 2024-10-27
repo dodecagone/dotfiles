@@ -66,6 +66,7 @@ When you boot, you will have essentially nothing but a terminal. Log in as the u
   ```
   but it's probably useless.
 * Restart you computer. You now have Debian12 testing, which is way more up-to-date (and still very stable, don't worry).
+
 For quality of life and not have to log in as root everytime, let's quickly set-up `sudo`.
   Same thing as before, type
   ```
