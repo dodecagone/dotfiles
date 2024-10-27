@@ -67,7 +67,7 @@ When you boot, you will have essentially nothing but a terminal. Log in as the u
   but it's probably useless.
 * Restart you computer. You now have Debian12 testing, which is way more up-to-date (and still very stable, don't worry).
 
-For quality of life and not have to log in as root everytime, let's quickly set-up `sudo`.
+* For quality of life and not have to log in as root everytime, let's quickly set-up `sudo`.
   Same thing as before, type
   ```
   su -
@@ -86,7 +86,7 @@ For quality of life and not have to log in as root everytime, let's quickly set-
   ```
   where `<user>` is the name of the user you defined during the installation process.
 
-  Now, `exit` the root console to return to the user, and `sudo` should work (try an `sudo ls`).
+  Now, `exit` the root console to return to the user, and `sudo` should work (try a `sudo ls` or something).
 
 We're now done with setting up the base. You could theoretically stop here and have a working computer, but please don't.
 
@@ -99,7 +99,7 @@ To do so, we will need to install `i3`, `x11-xserver-utils`, `pulseaudio`, `xorg
 
 Well, let's install !
 ```
-sudo apt install i3 x11-server-utils pulseaudio xorg
+sudo apt install i3 x11-server-utils pulseaudio xorg network-manager
 ```
 Then, you should be able to type
 ```
@@ -126,11 +126,39 @@ sudo apt install curl git feh alacritty vim firefox-esr
   ```
   vim .config/i3/config 
   ```
-  and look for the line `bindsym $mod+Return exec i3-sensible-terminal` and replace `i3-sensible-terminal` with `alacritty` (or whatever else you installed).
+  look for the line `bindsym $mod+Return exec i3-sensible-terminal`, and replace `i3-sensible-terminal` with `alacritty` (or whatever else you installed).
 
   Now save the file and type `startx` to load i3 again.
 
-    Now, pressing `mod+Return` in i3 should open `alacritty` !
+  Now, pressing `mod+Return` in i3 should open `alacritty` !
   
-  *Pro tips: when editing .config/i3/config, saving and pressing* `mod+Shift+R` *reloads i3 and applies the changes. It's great. You will use it.*
+  *Pro tip: when editing .config/i3/config, saving and pressing* `mod+Shift+R` *reloads i3 and applies the changes. No need to quit reload i3. It's great. You will use it.*
 
+# The End
+That's prety much it. Now you have a super basic config that you can customise to your liking. The documentation for i3 can be found [here](https://i3wm.org/docs/).
+
+You can check out [addy-dclxvi's work](https://github.com/addy-dclxvi/i3-starterpack/) for setting up a basic-but-not-too-ugly i3 config, or use my files.
+
+# Troubleshooting
+I have no knowledge so I can't help you but for ONE thing that drove me crazy. 
+
+## nmcli list doesn't show wifi / wifi card shown as unmanaged or unavalaible
+You should have `NetworkManager` installed (`sudo apt install network-manager`).
+
+* Restart `network-manager` with
+  ```
+  sudo systemctl restart NetworkManager.service```
+  ```
+* List your network devices with 
+  ```
+  nmcli dev status
+  ```
+  It shows you a list of your network devices, and their state. 
+  
+  **If your device is "unmanaged"**
+
+  Edit the `NetworkManager` config file with
+  ```
+  sudo vim /etc/NetworkManager/NetworkManager.conf
+  ```
+  and change `managed` from `false` to `true`. Save and quit. Restart `NetworkManager`.
