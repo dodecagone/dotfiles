@@ -4,7 +4,7 @@ I dislike having my computer clogged with packages and softwares.
 I like to often reset my computer and start from a fresh Debian12 bookworm install. 
 This time I wanted to give i3 a try (after using GNOME), and to have 0 excedent packages. 
 
-This repo is aimed at giving a simple and quick guide to setting up a **minimalistic but very usable i3wm env from a headless Debian12 installation**.
+This repo is aimed at giving a simple and quick guide to set up a **minimalistic** and **usable** i3wm env from a *headless* Debian12 installation**.
 
 ## Overview
 * Debian12 *stable* is *very* stable. It's intended for servers. I've used it for 3 years before realising how ununpdated it was. We will install Debian12 stable (aka "bookworm") and then switch the apt `sources.list` to testing (aka "trixie", it's still stable, don't worry about that). There is one important step so don't miss it!
@@ -27,12 +27,21 @@ Check the [official step-by-step guide](https://debian-handbook.info/browse/stab
 
 ## Updating to Debian testing (aka "trixie")
 When you boot, you will have essentially nothing but a terminal. Log in as the user you created during the installation process.
-* Get root access with `su -` and the root password.
-* Go into `sources.list` and change the sources to "trixie". To do so, type :
-    `vi /etc/apt/sources.list`
-  From there (in `vi`, I don't know for `nano`), type
-    `:%s/bookworm/trixie/g` and press `Enter`.
-  It should have replaced every "bookworm" with "trixie" in the file. 
+* Get root access by typing `su -` and then the root password.
+* Go into `sources.list` and change the sources to "trixie".
+
+  To do so, type:
+    ```
+    vi /etc/apt/sources.list
+    ```
+  From there (in `vi`, I don't know for `nano`), type:
+    ```
+    :%s/bookworm/trixie/g
+    ```
+   and press `Enter`.
+
+  It should have replaced every "bookworm" occurence with "trixie" in the file. If not, well do it yourself.
+
   Press `wq` to save and quit.
 * Type 
   `apt update` to update the new sources, then
