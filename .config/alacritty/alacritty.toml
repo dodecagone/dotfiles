@@ -1,0 +1,18 @@
+# imports the theme and the font defined in the other 2 files
+import = ["~/.config/alacritty/gruvbox_material_medium.toml", "~/.config/alacritty/fira-code-nerdfont.toml"]
+
+# DOCUMENTATION https://alacritty.org/config-alacritty.html
+
+[window]
+# adds padding, works well with picom's rounded corners
+padding = {x=8, y=8}
+# adds a bit of padding uniformely (I don't know what it really does tbh but looks cool)
+dynamic_padding = true
+
+[scrolling]
+# DEFAULT: 3 // Scrolling speed, I lowered it because I just lost control
+multiplier = 2
+
+[cursor]
+# Keeps the cursor blinking even in Vim and other
+style.blinking = "Always"

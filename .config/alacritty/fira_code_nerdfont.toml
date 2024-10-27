@@ -1,0 +1,4 @@
+# this one is supposed to change your font but i can't make it work
+# here it is in case you want to build from it
+[font]
+normal.family = "firacode"
