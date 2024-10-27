@@ -1,0 +1,52 @@
+general {
+	output_format = "i3bar"
+	colors = false
+	markup = pango
+	interval = 5
+}
+
+order += "load"
+order += "cpu_temperature 0"
+order += "wireless wlp3s0"
+order += "volume master"
+order += "battery 0"
+order += "time"
+
+load {
+	format = "<span background='#d8a657' foreground='#282828'>   </span><span background='#282828'>  %5min%  </span>"
+}
+
+cpu_temperature 0 {
+	format = "<span background='#ea6962' foreground='#282828'>    </span><span background='#282828'>  %degrees °C  </span>"
+	path = "/sys/class/thermal/thermal_zone0/temp"
+}
+
+wireless wlp3s0 {
+	format_up = "<span background='#89b482' foreground='#282828'>   </span><span background='#282828'>  %essid  </span>"
+	format_down = "<span background='#89b482' foreground='#282828'> 󱐤 </span><span background='#282828'>  Disconnected  </span>"
+}
+
+volume master {
+	format = "<span background='#7daea3' foreground='#282828'>   </span><span background='#282828'>  %volume  </span>"
+	format_muted = "<span background='#7daea3' foreground='#282828'>   </span><span background='#282828'>  Muted  </span>"
+	device = "default"
+	mixer = "Master"
+	mixer_idx = 0
+}
+
+battery 0 {
+	last_full_capacity = true
+	format = "<span background='#a9b665' foreground='#282828'>  %status  </span><span background='#282828'>  %percentage  </span>"
+	format_down = "No Battery"
+	status_chr = ""
+	status_bat = "󰁽"
+	status_unk = "󰂑"
+	status_full = "󰁹"
+	path = "/sys/class/power_supply/BAT%d/uevent"
+	low_threshold = 20
+	integer_battery_capacity = true
+}
+
+time {
+	format = "<span background='#d3869b' foreground='#282828'> 󱑆 </span><span background='#282828'>  %b %d %H:%M  </span>"
+}
