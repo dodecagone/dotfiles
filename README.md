@@ -27,7 +27,11 @@ Check the [official step-by-step guide](https://debian-handbook.info/browse/stab
 
 ## Updating to Debian testing (aka "trixie")
 When you boot, you will have essentially nothing but a terminal. Log in as the user you created during the installation process.
-* Get root access by typing `su -` and then the root password.
+* Get root access by typing
+  ```
+  su -
+  ```
+  and then the root password.
 * Go into `sources.list` and change the sources to "trixie".
 
   To do so, type:
