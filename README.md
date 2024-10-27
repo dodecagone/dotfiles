@@ -60,6 +60,7 @@ When you boot, you will have essentially nothing but a terminal. Log in as the u
   apt full-upgrade
   ```
   (if you don't do that, nothing will work when you restart your computer and you'd have to reinstall Debian12 all over again).
+
   For safety, I usually type an 
   ```
   apt update && apt upgrade
@@ -135,7 +136,7 @@ sudo apt install curl git feh alacritty vim firefox-esr
   *Pro tip: when editing .config/i3/config, saving and pressing* `mod+Shift+R` *reloads i3 and applies the changes. No need to quit reload i3. It's great. You will use it.*
 
 # The End
-That's prety much it. Now you have a super basic config that you can customise to your liking. The documentation for i3 can be found [here](https://i3wm.org/docs/).
+That's pretty much it. Now you have a super basic config that you can customise to your liking. The documentation for i3 can be found [here](https://i3wm.org/docs/).
 
 You can check out [addy-dclxvi's work](https://github.com/addy-dclxvi/i3-starterpack/) for setting up a basic-but-not-too-ugly i3 config, or use my files.
 
@@ -177,4 +178,53 @@ If you've got the same problem as I did multiple times, `ncmli dev wifi list` sh
 
 # Speedrunning any%
 This section is just a very quick summary of my setup guide, in case you already did everything and just need the commands. 
+
+As root,
+  ```
+  vi /etc/apt/sources.list
+  ```
+  ```
+  :s%/bookworm/trixie/g
+  ```
+  ```
+  apt update && apt full-upgrade
+  ```
+  Restart computer
+  
+  As root,
+  ```
+  apt install sudo
+  ```
+  ```
+  vi /etc/sudoers
+  ```
+  ```
+  root      ALL=(ALL:ALL) ALL
+  <user>    ALL=(ALL:ALL) ALL
+  ```
+  Install i3 and stuff
+  ```
+  sudo apt install i3 x11-server-utils pulseaudio xorg network-manager curl git vim feh alacritty firefox-esr
+  ```
+  To fix wifi
+  ```
+  sudo systemctl restart NetworkManager.service
+  ```
+  ```
+  sudo vim /etc/NetworkManager/NetworkManager.conf
+  ```
+  and put `managed` to `true`, then
+  ```
+  sudo vim /etc/network/interfaces
+  ```
+  and delete everything.
+  Then
+  ```
+  sudo shutdown -r now
+  ```
+  **Additional packages**
+  ```
+  sudo apt install picom neofetch
+  ```
+  
 
