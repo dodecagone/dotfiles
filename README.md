@@ -34,7 +34,7 @@ When you boot, you will have essentially nothing but a terminal. Log in as the u
   and then the root password.
 * Go into `sources.list` and change the sources to "trixie".
 
-  To do so, type:
+  To do so, type
     ```
     vi /etc/apt/sources.list
     ```
@@ -47,12 +47,14 @@ When you boot, you will have essentially nothing but a terminal. Log in as the u
   It should have replaced every "bookworm" occurence with "trixie" in the file. If not, well do it yourself.
 
   Type `:wq` to save and quit.
-* Type 
+* Update and upgrade your system.
+
+  To do so, type
   ```
   apt update
   ```
   to update the new sources, then
-  **VERY IMPORTANT** (that's the important step I mentionned), type:
+  **VERY IMPORTANT** (that's the important step I mentionned), type
   ```
   apt full-upgrade
   ```
@@ -62,6 +64,33 @@ When you boot, you will have essentially nothing but a terminal. Log in as the u
   apt update && apt upgrade
   ```
   but it's probably useless.
-* Restart you computer. You know have Debian12 testing, which is way more up-to-date (and still very stable, don't worry).
+* Restart you computer. You now have Debian12 testing, which is way more up-to-date (and still very stable, don't worry).
+* For quality of life and not have to log in as root everytime, let's quickly set-up `sudo`.
+  Same thing as before, type
+```
+su -
+```
+and then
+```
+apt install sudo
+```
+Then
+```
+vi /etc/sudoers
+```
+and find `root      ALL=(ALL:ALL) ALL`. Below, add
+```
+<user>      ALL=(ALL:ALL) ALL
+```
+where `<user>` is the name of the user you defined during the installation process.
 
+Now, `exit` the root console to return to the user, and `sudo` should work (try an `sudo ls`).
 
+## Setting up i3wm
+Now, it's time to install the *bare minimum* to make i3wm work. 
+
+To do so, we will need to install `i3`, `x11-xserver-utils`, `pulseaudio`, `xorg`, and `network-manager`.
+
+*Note: I have not dug enough, but maybe the* `xorg` *package is not needed in its entirety, but it really does not matter`.
+
+First, sin
