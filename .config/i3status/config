@@ -1,3 +1,11 @@
+# Link to the original file below, by user addy-dclxvi
+# https://github.com/addy-dclxvi/i3-starterpack/
+# https://github.com/addy-dclxvi/i3-starterpack/blob/master/.config/i3status/config
+# I just changed the color palette and some icons 
+
+# KNOW ISSUE: the icons are cut in half when displaying on a colored background
+# This is apparently a known issue with NerdFonts but I cba
+
 general {
 	output_format = "i3bar"
 	colors = false

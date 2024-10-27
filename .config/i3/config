@@ -5,7 +5,7 @@
 # this file and re-run i3-config-wizard(1).
 #
 
-# i3 config file (v4)
+# i3 config file (v1)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
@@ -14,7 +14,9 @@ set $mod Mod4
 set $terminal alacritty
 set $browser firefox
 
-###--------CUSTOM COLORS---------###
+#####################
+#   CUSTOM COLORS   #
+#####################
 
 # class                 border  bground text    indicator child_border
 client.focused          #A9B665 #A9B665 #282828 #A9B665   #A9B665
@@ -25,15 +27,11 @@ client.placeholder      #282828 #282828 #D4BE98 #282828   #282828
 
 client.background       #282828
 
-###------------------------------###
+#-------------------#
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:firacode 14
-
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -201,6 +199,9 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
+
+# Thanks to github.com/addy-dclxvi/ for the i3status which I took and edited a tiny bit
+# https://github.com/addy-dclxvi/i3-starterpack/
 bar {
     status_command i3status
 	font pango:firacode 10
@@ -219,30 +220,30 @@ bar {
 }
 
 
-### CUSTOM COMMANDS ###
+#######################
+#   CUSTOM COMMANDS   #
+#######################
 
 # increases the rate and response time of holding down a key
 exec --no-startup-id xset r rate 250 40
+
+# starts picom (if installed)
 exec_always --no-startup-id picom -C
-exec_always --no-startup-id feh --bg-fill --randomize ~/Pictures/debian_bg_1.png
+
+# starts feh (for the background)
+exec_always --no-startup-id feh --bg-fill --randomize <path>/<picture>.png
+
+# adds gaps between windows (so you can see your beautiful bg)
 gaps inner 12
 gaps outer -2
+
+# changes the border's thickness around focused windows (0 = disabled)
 default_border pixel 0
 
-### CUSTOM BINDS ###
+####################
+#   CUSTOM BINDS   #
+####################
+
+# bind for taking a screenshot with imagemagick
 bindsym $mod+Print exec NOW=$(date +%d-%b-%Y_%H-%M-%S)&& import -window root ~/Pictures/Screenshots/screenshot_$NOW.png
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
