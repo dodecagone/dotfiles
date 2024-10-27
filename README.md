@@ -27,7 +27,7 @@ Check the [official step-by-step guide](https://debian-handbook.info/browse/stab
 * Finish the installation process, unplug the media and reboot.
 
 ## Updating to Debian testing (aka "trixie")
-When you boot, you will have essentially nothing but a terminal. Log in as the user you created during the installation process.
+When you boot, you will have essentially nothing but a terminal. Log in as the user you created during the installation process. Then we will change the apt sources.
 * Get root access by typing
   ```
   su -
@@ -59,14 +59,14 @@ When you boot, you will have essentially nothing but a terminal. Log in as the u
   ```
   apt full-upgrade
   ```
-  (if you don't do that, nothing will work when you restart your computer and you'd have to restart all over again).
+  (if you don't do that, nothing will work when you restart your computer and you'd have to reinstall Debian12 all over again).
   For safety, I usually type an 
   ```
   apt update && apt upgrade
   ```
   but it's probably useless.
 * Restart you computer. You now have Debian12 testing, which is way more up-to-date (and still very stable, don't worry).
-* For quality of life and not have to log in as root everytime, let's quickly set-up `sudo`.
+For quality of life and not have to log in as root everytime, let's quickly set-up `sudo`.
   Same thing as before, type
   ```
   su -
