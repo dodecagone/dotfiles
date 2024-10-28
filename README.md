@@ -9,22 +9,23 @@
 ## Why and what is it for
 I dislike having my computer clogged with packages and softwares. 
 I like to often reset my computer and start from a fresh Debian12 bookworm install. 
-This time I wanted to give i3 a try (after using GNOME), and have 0 excedent packages. 
+This time I wanted to give `i3` a try (after using `gnome` for a while), and minimize the excedent packages.
 
-This repo is aimed at giving a simple and quick guide to set up a **minimalistic** and **usable** i3wm env from a *headless* Debian12 installation.
+This repo is aimed at giving a simple and quick guide for seting up a **minimalistic** and **usable** `i3wm` env from a *headless* Debian12 installation.
 
 ## Overview
-* Debian12 *stable* is *very* stable. It's intended for servers. I've used it for 3 years before realising how ununpdated it was. We will install Debian12 stable (aka "bookworm") and then switch the apt sources to *testing* (aka "trixie", it is still stable, do not worry about that). There is one important step so do not miss it!
-* At first, we will not install any desktop environment, so we will have to setup x11 and i3wm by ourselves. It is very easy, you just have to know the right packages to install (that's why I'm here for :D).
-* One `i3wm` is set up, you can clone this repo to get my config so you have something not to ugly (hopefully) to start out with.
-Not everything I have in my dotfiles is necessary *per se* but it makes things much more pretty/usable.
+* Debian12 *stable* is *very* stable. It's intended for servers. I've used it for 3 years before realising how ununpdated it was, and it was a pain to install anyting updated. 
+  At first, we will install Debian12 *stable* (aka "bookworm") and then switch the apt sources to *testing* (aka "trixie", it is still stable, do not worry about that). **There is one important step so do not miss it!**
+* At first, won't install any desktop environment, so we'll have to setup x11 and i3wm by ourselves. It is very easy, you just have to know the right packages to install (that's why I'm here for :D).
+* Once `i3wm` is all set up, you can clone this repo to get my config so you have something not to ugly (hopefully) to start out with.
+Not everything I have in my dotfiles is necessary *per se* but it makes things much more pretty/usable for minimal effort.
 
 ## Prerequisites
 * An Internet connection.
 * Backup the files you want to keep. The goal is to start completely headless so we will reset everything.
-* Have a Debian12 **stable** (aka "bookworm") installation media ready. See [debian website](https://www.debian.org/releases/stable/i386/ch02s04.en.html) for more info.
-* I expect you to know how to use `vi` or `nano` because we will have no graphical environment for a while.
-* It shouldn't be your first time toying with a Debian-based distribution. It is not too advanced but I will not detail *everything* (I will link the documentations if needed).
+* Have a Debian12 **stable** (aka "bookworm") installation media ready. See the [debian website](https://www.debian.org/releases/stable/i386/ch02s04.en.html) for more info if you don't know how.
+* I expect you to know how to use `vi` or `nano` because we won't have any graphical environment for a little while.
+* It shouldn't be your first time toying with a Debian-based distribution. It is not too advanced but I will not detail *everything* (I'll link the documentations if needed).
 
 # Installation
 ## Installing Debian
@@ -34,7 +35,7 @@ Check the [official step-by-step guide](https://debian-handbook.info/browse/stab
 * Finish the installation process, unplug the media and reboot.
 
 ## Updating to Debian testing (aka "trixie")
-When you boot, you will have essentially nothing but a terminal. Log in as the user you created during the installation process. Then we will change the apt sources.
+When you boot, you will have essentially nothing but a terminal. Log in as the user you created during the installation process. Then we'll change the apt sources.
 * Get root access by typing
   ```
   su -
@@ -52,7 +53,7 @@ When you boot, you will have essentially nothing but a terminal. Log in as the u
     ```
    and press `Enter`.
 
-  It should have replaced every "bookworm" occurence with "trixie" in the file. If not, well do it yourself.
+  It should have replaced every "bookworm" occurence with "trixie" in the file. If not, well do it by hand I don't know.
 
   Type `:wq` to save and quit.
 * Update and upgrade your system.
@@ -98,8 +99,8 @@ When you boot, you will have essentially nothing but a terminal. Log in as the u
 
 We're now done with setting up the base. You could theoretically stop here and have a working computer, but please don't.
 
-## Making i3wm just work
-Now, it's time to install the *bare minimum* to make i3wm work. 
+## Making `i3wm` just work
+Now, it's time to install the *bare minimum* to make `i3wm` work. 
 
 To do so, we will need to install `i3`, `x11-xserver-utils`, `pulseaudio`, `xorg`, and `network-manager`.
 
@@ -115,7 +116,7 @@ startx
 ```
 and `i3wm` should start !
 
-A window should open, asking you to create an i3 `config` file (yes), and to chose a `mod` key (adice: use `super`, since `alt` will interfere with softwares' shortcuts).
+A window should open, asking you if you want to create an `i3` config file (yes you do), and to chose a `mod` key (adice: use `super`, since `alt` will interfere with softwares' shortcuts).
 Now you have a black screen and an ugly bar at the bottom. 
 
 You can press `mod+Return` to open up a terminal (don't worry if the terminal is gruesome, we will change it right away).
@@ -128,24 +129,24 @@ It's time to install actual packages.
 ```
 sudo apt install curl git feh alacritty vim firefox-esr
 ```
-`feh` will be our background manager, and `alacritty` our terminal emulator. Feel free to use other ones. I like these ones because they are light and feel minimalistic, and are easy to configure.
+`feh` will be our background manager, and `alacritty` our terminal emulator. Feel free to use other ones if you prefer. I like these ones because they are light and feel minimalistic, and are easy to configure.
 
-* Let's change the base terminal. Go into the i3 `config` file 
+* Let's change the base terminal. Go into the `i3` config file 
   ```
   vim .config/i3/config 
   ```
   look for the line `bindsym $mod+Return exec i3-sensible-terminal`, and replace `i3-sensible-terminal` with `alacritty` (or whatever else you installed).
 
-  Now save the file and type `startx` to load i3 again.
+  Now save the file and type `startx` to load `i3` again.
 
-  Now, pressing `mod+Return` in i3 should open `alacritty` !
+  Now, pressing `mod+Return` in `i3` should open `alacritty` !
   
-  *Pro tip: when editing .config/i3/config, saving and pressing* `mod+Shift+R` *reloads i3 and applies the changes. No need to quit reload i3. It's great. You will use it.*
+  *Pro tip: when editing .config/i3/config, saving and pressing* `mod+Shift+R` *reloads `i3` and applies the changes. No need to quit reload `i3`. It's great. You will use it.*
 
 # The End
-That's pretty much it. Now you have a super basic config that you can customise to your liking. The documentation for i3 can be found [here](https://i3wm.org/docs/).
+That's pretty much it. Now you have a super basic config that you can customise to your liking. The documentation for `i3` can be found [here](https://i3wm.org/docs/).
 
-You can check out [addy-dclxvi's work](https://github.com/addy-dclxvi/i3-starterpack/) for setting up a basic-but-not-too-ugly i3 config, or use my files.
+You can check out [addy-dclxvi's work](https://github.com/addy-dclxvi/i3-starterpack/) for setting up a basic-but-not-too-ugly `i3` config, or use my files.
 
 # Troubleshooting
 I have no knowledge so I can't help you but for ONE thing that drove me crazy. 
@@ -209,7 +210,7 @@ As root,
   root      ALL=(ALL:ALL) ALL
   <user>    ALL=(ALL:ALL) ALL
   ```
-  Install i3 and stuff
+  Install `i3` and stuff
   ```
   sudo apt install i3 x11-server-utils pulseaudio brightnessctl xorg network-manager curl git vim feh alacritty firefox-esr
   ```
