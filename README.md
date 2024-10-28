@@ -3,7 +3,7 @@
 * [Installation](#installation)
 * [The End](#the-end)
 * [Troubleshooting](#troubleshooting)
-* [Speedrunning](#speedrunning-any%)
+* [Speedrunning](#speedrunning-any)
 
 # Introduction
 ## Why and what is it for
