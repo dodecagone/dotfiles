@@ -1,3 +1,10 @@
+# Table of Contents
+* [Introduction](#introduction)
+* [Installation](#installation)
+* [The End](#the-end)
+* [Troubleshooting](#troubleshooting)
+* [Speedrunning](#speedrunning-any%)
+
 # Introduction
 ## Why and what is it for
 I dislike having my computer clogged with packages and softwares. 
@@ -100,7 +107,7 @@ To do so, we will need to install `i3`, `x11-xserver-utils`, `pulseaudio`, `xorg
 
 Well, let's install !
 ```
-sudo apt install i3 x11-server-utils pulseaudio xorg network-manager
+sudo apt install i3 x11-server-utils pulseaudio brightnessctl xorg network-manager
 ```
 Then, you should be able to type
 ```
@@ -204,7 +211,7 @@ As root,
   ```
   Install i3 and stuff
   ```
-  sudo apt install i3 x11-server-utils pulseaudio xorg network-manager curl git vim feh alacritty firefox-esr
+  sudo apt install i3 x11-server-utils pulseaudio brightnessctl xorg network-manager curl git vim feh alacritty firefox-esr
   ```
   To fix wifi
   ```
