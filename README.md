@@ -184,7 +184,7 @@ If you've got the same problem as I did multiple times, `ncmli dev wifi list` sh
 
 
 # Speedrunning any%
-This section is just a very quick summary of my setup guide, in case you already did everything and just need the commands. 
+This section is just a very quick summary of my setup guide, in case you already did everything once and just need the main commands (it's mainly intented for me ngl).
 
 As root,
   ```
