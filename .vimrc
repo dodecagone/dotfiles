@@ -6,6 +6,7 @@ syntax on
 set number
 set shiftwidth=4
 set tabstop=4
+set mouse=a
 set expandtab
 set nobackup
 set scrolloff=10
@@ -30,6 +31,7 @@ call plug#begin()
 
     Plug 'vim-airline/vim-airline'
     Plug 'sainnhe/gruvbox-material'
+    "Plug 'vim-syntastic/syntastic'
 
 call plug#end()
 
