@@ -50,7 +50,7 @@ battery 0 {
 	status_bat = "󰁽"
 	status_unk = "󰂑"
 	status_full = "󰁹"
-	path = "/sys/class/power_supply/BAT%d/uevent"
+	path = "/sys/class/power_supply/BAT1/uevent"
 	low_threshold = 20
 	integer_battery_capacity = true
 }

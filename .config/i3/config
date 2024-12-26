@@ -9,6 +9,8 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+# I've learned the arts of configuring i3 thanks to pâte à la soupe
+
 set $mod Mod4
 
 set $terminal alacritty
@@ -235,19 +237,30 @@ exec --no-startup-id xset r rate 250 40
 exec_always --no-startup-id picom -C
 
 # starts feh (for the background)
-exec_always --no-startup-id feh --bg-fill --randomize ~/Pictures/*
+exec_always --no-startup-id feh --bg-fill --randomize ~/Pictures/Backgrounds/Normal
 
 # adds gaps between windows (so you can see your beautiful bg)
-gaps inner 12
+gaps inner 15
 gaps outer -2
 
 # changes the border's thickness around focused windows (0 = disabled)
-default_border pixel 0
+default_border pixel 3
 
 ####################
 #   CUSTOM BINDS   #
 ####################
 
 # bind for taking a screenshot with imagemagick
-bindsym $mod+Print exec NOW=$(date +%d-%b-%Y_%H-%M-%S)&& import -window root ~/Pictures/Screenshots/screenshot_$NOW.png
+bindsym $mod+Print exec NOW=$(date +%d-%b-%Y_%H-%M-%S) && import -window root ~/Pictures/Screenshots/screenshot_$NOW.png
+
+# bind for switching backgrounds
+bindsym $mod+p exec --no-startup-id feh --bg-fill --randomize ~/Pictures/Backgrounds/Normal
+bindsym $mod+Mod1+p exec --no-startup-id feh --bg-fill --randomize ~/Pictures/Backgrounds/Arcane/Scenery
+bindsym $mod+Shift+p exec --no-startup-id feh --bg-fill --randomize ~/Pictures/Backgrounds/Cons
+
+# browser
+bindsym $mod+Tab exec --no-startup-id firefox
+
+# shutdown
+bindsym $mod+Shift+S exec --no-startup-id systemctl poweroff
 

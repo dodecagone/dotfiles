@@ -1,5 +1,7 @@
 # imports the theme and the font defined in the other 2 files
-import = ["~/.config/alacritty/gruvbox_material_medium.toml", "~/.config/alacritty/fira-code-nerdfont.toml"]
+import = ["~/.config/alacritty/gruvbox_material_medium.toml",
+#"~/.config/alacritty/cyberpunk.toml",
+"~/.config/alacritty/font.toml"]
 
 # DOCUMENTATION https://alacritty.org/config-alacritty.html
 

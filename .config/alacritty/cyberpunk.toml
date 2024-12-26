@@ -1,0 +1,30 @@
+
+# Colors (Cyberpunk 2077 inspired)
+# Made myself from different palettes
+
+# Default colors
+[colors.primary]
+background = '#00060e'
+foreground = '#FAFAFA'
+
+# Normal colors
+[colors.normal]
+black   = '#00060e'
+red     = '#FF1222'
+green   = '#ffcc0e'
+yellow  = '#ffcc0e'
+blue    = '#07B0F2'
+magenta = '#EF1BF2'
+cyan    = '#05F2DB'
+white   = '#FAFAFA'
+
+# Bright colors (same as normal colors)
+[colors.bright]
+black   = '#00060e'
+red     = '#FF1222'
+green   = '#ffcc0e'
+yellow  = '#ffcc0e'
+blue    = '#07B0F2'
+magenta = '#EF1BF2'
+cyan    = '#05F2DB'
+white   = '#FAFAFA'

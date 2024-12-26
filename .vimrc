@@ -6,6 +6,7 @@ syntax on
 set number
 set shiftwidth=4
 set tabstop=4
+set mouse=a
 set expandtab
 set nobackup
 set scrolloff=10
@@ -19,45 +20,60 @@ set showmatch
 set hlsearch
 set history=100
 
+" set linebreak
+" set textwidth=80
+
+set incsearch
+set lazyredraw
+set colorcolumn=80
+
+set cursorline
+
 set wildmenu
 set wildmode=list:longest
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
-" PLUGINS ---------------------------------------------------------------- {{{
+     " PLUGINS ---------------------------------------------------------------- {{{
 
-" Plugin code goes here.
-call plug#begin()
+    " Plugin code goes here.
+    call plug#begin()
 
-    Plug 'vim-airline/vim-airline'
-    Plug 'sainnhe/gruvbox-material'
+        Plug 'vim-airline/vim-airline'
+        Plug 'sainnhe/gruvbox-material'
+        Plug 'vim-python/python-syntax'
+        "Plug 'morhetz/gruvbox'
+        "Plug 'vim-syntastic/syntastic'
 
-call plug#end()
+    call plug#end()
 
->
-        " Important!!
-        if has('termguicolors')
-          set termguicolors
-        endif
+    let g:python_highlight_all = 1
 
-        " For dark version.
-        set background=dark
+    >
+            " Important!!
+            if has('termguicolors')
+              set termguicolors
+            endif
 
-        " For light version.
-        " set background=light
+            " For dark version.
+            set background=dark
 
-        " Set contrast.
-        " This configuration option should be placed before `colorscheme gruvbox-material`.
-        " Available values: 'hard', 'medium'(default), 'soft'
-        let g:gruvbox_material_background = 'medium'
+            " For light version.
+            " set background=light
 
-        " For better performance
-        let g:gruvbox_material_better_performance = 1
+            " Set contrast.
+            " This configuration option should be placed before `colorscheme gruvbox-material`.
+            " Available values: 'hard', 'medium'(default), 'soft'
+            let g:gruvbox_material_background = 'medium'
 
-        " Change Airline theme
-        let g:airline_theme = 'gruvbox_material'
+            " For better performance
+            let g:gruvbox_material_better_performance = 1
 
-        colorscheme gruvbox-material
-  <
+            " Change Airline theme
+            let g:airline_theme = 'gruvbox_material'
+            let g:airline_powerline_fonts = 1
+
+            colorscheme gruvbox-material
+      <
 
 " }}}
 
