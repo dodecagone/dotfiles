@@ -1,9 +1,13 @@
+let g:polyglot_disabled = ['markdown']
+
 set nocompatible
+
 filetype on 
 filetype plugin on
 filetype indent on
-syntax on
+
 set number
+set norelativenumber
 set shiftwidth=4
 set tabstop=4
 set mouse=a
@@ -11,77 +15,95 @@ set expandtab
 set nobackup
 set scrolloff=10
 set nowrap
-set incsearch
 set ignorecase
 set smartcase
 set showcmd
-set showmode
 set showmatch
-set hlsearch
 set history=100
+set signcolumn=number
 
 " set linebreak
 " set textwidth=80
 
+set hlsearch
 set incsearch
 set lazyredraw
 set colorcolumn=80
 
+set noshowmode
 set cursorline
 
 set wildmenu
 set wildmode=list:longest
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
+syntax on
+set termguicolors
+colorscheme darksouls
+
+
      " PLUGINS ---------------------------------------------------------------- {{{
 
     " Plugin code goes here.
-    call plug#begin()
+call plug#begin()
 
-        Plug 'vim-airline/vim-airline'
-        Plug 'sainnhe/gruvbox-material'
-        Plug 'vim-python/python-syntax'
-        "Plug 'morhetz/gruvbox'
-        "Plug 'vim-syntastic/syntastic'
+Plug 'vim-airline/vim-airline'
+let g:airline_theme='base16_darksouls'
 
-    call plug#end()
+Plug 'yggdroot/indentLine'
+        let g:indentLine_char = '|'
 
-    let g:python_highlight_all = 1
+" Plug 'godlygeek/tabular'
+Plug 'preservim/vim-indent-guides'
+Plug 'sheerun/vim-polyglot'
 
-    >
-            " Important!!
-            if has('termguicolors')
-              set termguicolors
-            endif
+Plug 'tpope/vim-abolish'
 
-            " For dark version.
-            set background=dark
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-            " For light version.
-            " set background=light
+" use <tab> to trigger completion and navigate to the next complete item
+function! CheckBackspace() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
-            " Set contrast.
-            " This configuration option should be placed before `colorscheme gruvbox-material`.
-            " Available values: 'hard', 'medium'(default), 'soft'
-            let g:gruvbox_material_background = 'medium'
+inoremap <silent><expr> <Tab>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
 
-            " For better performance
-            let g:gruvbox_material_better_performance = 1
+" Make <Tab> confirm autocomplete
+inoremap <silent><expr> <Tab> coc#pum#visible() && coc#pum#info()['index'] != -1 ? coc#pum#confirm() : "<Tab>"
+" use <c-space> for trigger completion
+inoremap <silent><expr> <c-space> coc#refresh()
+" Use <C-@> on vim
+inoremap <silent><expr> <c-@> coc#refresh()
+" Use <UP> and <DOWN> to navigate completion list 
+inoremap <expr> <DOWN> coc#pum#visible() ? coc#pum#next(1) : "\<DOWN>"
+inoremap <expr> <UP> coc#pum#visible() ? coc#pum#prev(1) : "\<UP>"
 
-            " Change Airline theme
-            let g:airline_theme = 'gruvbox_material'
-            let g:airline_powerline_fonts = 1
+"Plug 'vim-syntastic/syntastic'
 
-            colorscheme gruvbox-material
-      <
+"Plug 'kaarmu/typst.vim'
 
-" }}}
+"Plug 'lervag/vimtex'
+"    let g:tex_flavor='latex'
+"    let g:vimtex_view_method='zathura'
+"    let g:vimtex_quickfix_mode=0
+"    set conceallevel=1
+"    let g:tex_conceal='abdmg'
+
+call plug#end()
+
+   " }}}
 
 
 " MAPPINGS --------------------------------------------------------------- {{{
 
 " Mappings code goes here.
-
+    map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
+    map <S-j> <DOWN>
+    map <S-k> <UP>
 " }}}
 
 
@@ -102,5 +124,9 @@ augroup END
 " STATUS LINE ------------------------------------------------------------ {{{
 
 " Status bar code goes here.
-
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#default#layout = [
+    \ [ 'a', 'b', 'c' ],
+    \ [ ]
+    \ ]
 " }}}
